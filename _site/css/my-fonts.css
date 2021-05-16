@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap');
+/*@import url('https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i&display=swap');*/
+@import url('https://fonts.googleapis.com/css?family=Kalam:400,700&display=swap');
+
+
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap');
+
+@import url('https://fonts.googleapis.com/css?family=Sen&display=swap');
+
+body { 
+  font-family: 'Sen', sans-serif;
+  font-weight: 400;
+  color: #e85862;
+}
+
+h1 {
+  font-family: 'Kalam', cursive;
+  font-weight: 500;
+  color: #e85862;
+}
+
+h2 {
+  font-family: 'Kalam', cursive;
+  font-weight: 300;
+  color: #e85862;
+}
+
+h3 {
+  font-family: 'Sen', sans-serif;
+  text-transform: uppercase;
+  font-weight: 300;
+  color: #e85862;
+  font-size: 1.3em !important;
+}
+
+h4, h5, h6 {
+  font-family: 'Sen', sans-serif;
+  font-weight: 400;
+  color: #e85862;
+}
+
+.remark-code,
+.remark-inline-code{ 
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+@media print {
+  body {
+    font-family: 'Sen', sans-serif;
+    font-weight: 400;
+}
