@@ -1,0 +1,227 @@
+---
+title: "Building website with Blogdown"
+subtitle: 
+params:
+  event: "R-Ladies Melbourne Meetup"
+  date: "2021-05-19"
+author: Danyang Dai
+output:
+  xaringan::moon_reader:
+    css: ["default", "css/my-theme.css", "css/my-fonts.css"]
+    seal: false 
+    lib_dir: libs
+    nature:
+      highlightStyle: dracula
+      highlightLanguage: ["r", "yaml", "markdown"]
+      slideNumberFormat: "" 
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      beforeInit: "https://platform.twitter.com/widgets.js"
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, 
+  comment = NA, dpi = 300, echo = FALSE,
+  fig.align = "center", out.width = "60%", cache = FALSE,
+  fig.path = "figs/")
+library(tidyverse)
+library(gganimate)
+ozcols <- wesanderson::wes_palette("Royal2")[c(2:3)]
+```
+
+class: title-slide, center, bottom
+
+
+# `r rmarkdown::metadata$title`
+
+## `r rmarkdown::metadata$author`
+
+#### `r params$event` &#183; `r params$date`
+
+---
+background-image: linear-gradient(to right, rgba(250, 250, 250, .5), rgba(250, 250, 250, .6)),url(images/background1.png)
+background-size: cover
+
+class: center, middle
+
+# Find Me at 
+
+[`r icon::fontawesome$brands$"github"`&nbsp;@DanyangDai ](https://github.com/DanyangDai)
+
+[`r icon::fontawesome$brands$"twitter"` &nbsp; @Daidaidai2014](https://twitter.com/Daidaidai2014)
+
+[`r icon::fontawesome$solid$"link"` &nbsp; https://dai.netlify.app](https://dai.netlify.app)
+
+[`r icon::fontawesome$solid$"paper-plane"` &nbsp; danyangd@student.unimelb.edu.au](mailto:danyangd@student.unimelb.edu.au)
+
+[`r icon::fontawesome$brands$"linkedin"`&nbsp; https://www.linkedin.com/in/danyang-dai-7529b4152/](https://www.linkedin.com/in/danyang-dai-7529b4152/)
+
+
+---
+background-image: url(images/blogdown-1.jpg)
+background-size: 100%
+
+
+---
+background-image: url(images/blogdown-2.jpg)
+background-size: 100%
+
+---
+
+background-image: url(images/blogdown-3.jpg
+background-size: 100%
+
+---
+background-image: url(images/blogdown-4.jpg)
+background-size: 100%
+
+---
+class: center, bottom
+
+background-image: url(images/blogdown-14.jpg)
+background-size: 100%
+
+<https://alison.rbind.io>
+
+<iframe src="https://alison.rbind.io" height="400" width="1200" frameborder="0"></iframe> 
+
+
+---
+class: center, bottom
+
+background-image: url(images/blogdown-14.jpg)
+background-size: 100%
+
+<https://earo.me>
+
+<iframe src="https://earo.me" height="400" width="1200" frameborder="0"></iframe> 
+
+---
+class: center, bottom
+
+background-image: url(images/blogdown-14.jpg)
+background-size: 100%
+
+<https://dai.netlify.app>
+
+<iframe src="https://dai.netlify.app" height="400" width="1200" frameborder="0"></iframe> 
+
+---
+
+background-image: url(images/how-10.jpg)
+background-size: 100%
+---
+
+background-image: url(images/how-12.jpg)
+background-size: 100%
+---
+class: center, bottom
+
+# What do I want my website to look like?  
+<https://themes.gohugo.io>
+
+<iframe src="https://themes.gohugo.io" height="600" width="1200" frameborder="0"></iframe> 
+
+---
+
+
+background-image: url(images/how-11.jpg)
+background-size: 100%
+
+---
+
+background-image: url(images/post1.jpg)
+background-size: 100%
+
+class: center, top
+
+# What do I want to put on my website? 
+
+---
+
+background-image: url(images/post2.jpg)
+background-size: 100%
+
+class: center, top
+
+# What do I want to put on my website? 
+
+
+---
+background-image: url(images/how-13.jpg)
+background-size: 100%
+
+---
+
+background-image: url(images/github1.jpg)
+background-size: 100%
+
+class: center, top
+
+# How to creat a github repo?
+
+---
+background-image: url(images/git2.jpg)
+background-size: 100%
+
+class: center, top
+
+# How to clone a repo in R Studio?
+
+
+---
+background-image: url(images/how-14.jpg)
+background-size: 100%
+
+---
+background-image: url(images/netlify1.jpg)
+background-size: 100%
+
+# Netlify deploy
+
+---
+background-image: url(images/before1.jpg)
+background-size: 100%
+
+---
+background-image: url(images/before2.jpg)
+background-size: 100%
+
+---
+background-image: url(images/before3.jpg)
+background-size: 100%
+
+---
+background-image: url(images/before4.jpg)
+background-size: 100%
+---
+background-image: url(images/before-5.jpg)
+background-size: 100%
+
+---
+background-image: linear-gradient(to right, rgba(250, 250, 250, .5), rgba(250, 250, 250, .6)),url(images/background1.png)
+background-size: cover
+
+class: center, middle
+
+# Save you some googling time 
+
+[Blogdown installation guide](https://github.com/rstudio/blogdown)
+
+[Github account](https://docs.github.com/en/github/getting-started-with-github/signing-up-for-a-new-github-account)
+
+[“I web, therefore I am a spiderman.”- Yihui Xie](https://bookdown.org/yihui/blogdown/) blogdown: Creating Websites with R Markdown  
+
+[Alison Hill](https://summer-of-blogdown.netlify.app) Summer of blogdown 
+
+[Hugo Themes](https://themes.gohugo.io) Websites themes 
+
+[netlify](https://www.netlify.com)
+
+---
+background-image: url(images/before-6.jpg)
+background-size: 100%
+
+
