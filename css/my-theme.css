@@ -319,7 +319,7 @@ h1#pop-quiz:after {
 /* live code */
 
 .live-code {
-  background-color: #000;
+  background-color: ##FF748C;
   color: #fff;
 }
 
@@ -332,7 +332,7 @@ h1#pop-quiz:after {
 .live-code h1:before {
     content: "";
     display: inline-block;
-    background: url("../Live-code.png") no-repeat;
+    background: url("../begincode.jpg") no-repeat;
     width: 100px;
     height: 100px;
     float: left;
@@ -531,8 +531,8 @@ h4 {
 }
 
 .remark-code-line-highlighted {
-  color: #E7553CFF;
-  background-color: transparent;
+  color: #E7553C;
+  background-color: #FF748C;
 }
 
 pre {

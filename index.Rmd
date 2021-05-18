@@ -11,7 +11,7 @@ output:
     seal: false 
     lib_dir: libs
     nature:
-      highlightStyle: dracula
+      highlightStyle: solarized-light
       highlightLanguage: ["r", "yaml", "markdown"]
       slideNumberFormat: "" 
       highlightLines: true
@@ -77,6 +77,13 @@ background-size: 100%
 background-image: url(images/blogdown-4.jpg)
 background-size: 100%
 
+
+
+???
+
+you can publish your website that is created in R with blogdown to world 
+
+
 ---
 class: center, bottom
 
@@ -88,6 +95,15 @@ background-size: 100%
 <iframe src="https://alison.rbind.io" height="400" width="1200" frameborder="0"></iframe> 
 
 
+---
+class: center, bottom
+
+background-image: url(images/blogdown-14.jpg)
+background-size: 100%
+
+<http://www.dicook.org>
+
+<iframe src="http://www.dicook.org" height="400" width="1200" frameborder="0"></iframe> 
 ---
 class: center, bottom
 
@@ -108,6 +124,10 @@ background-size: 100%
 
 <iframe src="https://dai.netlify.app" height="400" width="1200" frameborder="0"></iframe> 
 
+???
+
+Even they all looks different and unique, they are actaully all using the same Hugo theme which is the academic theme we will be working with today. 
+
 ---
 
 background-image: url(images/how-10.jpg)
@@ -116,6 +136,11 @@ background-size: 100%
 
 background-image: url(images/how-12.jpg)
 background-size: 100%
+
+???
+
+Hugo is a static site generator. Blogdown uses Hugo to create and build webiste in R. It also provides the themes we want to use in Blogdown
+
 ---
 class: center, bottom
 
@@ -130,6 +155,10 @@ class: center, bottom
 background-image: url(images/how-11.jpg)
 background-size: 100%
 
+???
+
+You can tell and share your storys by adding blog posts in your website using R markdown. 
+
 ---
 
 background-image: url(images/post1.jpg)
@@ -138,6 +167,13 @@ background-size: 100%
 class: center, top
 
 # What do I want to put on my website? 
+
+
+
+
+???
+
+Just in case you haven't used R markdown before, check out my last talk from the website in the footnote 
 
 ---
 
@@ -148,10 +184,18 @@ class: center, top
 
 # What do I want to put on my website? 
 
+.footnote[
+<https://dai.netlify.app/talk/r-markdown-a-better-way-of-communicating-with-data/>
+]
 
 ---
 background-image: url(images/how-13.jpg)
 background-size: 100%
+
+
+???
+
+Keeping the website to ourself is like a dairy, you might want to share your story to the world. To do that we need to connect our Blogdown project with Github. 
 
 ---
 
@@ -160,7 +204,7 @@ background-size: 100%
 
 class: center, top
 
-# How to creat a github repo?
+# How to create a github repo?
 
 ---
 background-image: url(images/git2.jpg)
@@ -174,6 +218,12 @@ class: center, top
 ---
 background-image: url(images/how-14.jpg)
 background-size: 100%
+
+
+???
+We are almost there to make your webiste alive! 
+
+That was not enough access it easily. You can simply connect your github with Netlify which host your website for free!!!!
 
 ---
 background-image: url(images/netlify1.jpg)
@@ -206,22 +256,154 @@ background-size: cover
 
 class: center, middle
 
-# Save you some googling time 
+# Save you some Googling time 
 
 [Blogdown installation guide](https://github.com/rstudio/blogdown)
 
 [Github account](https://docs.github.com/en/github/getting-started-with-github/signing-up-for-a-new-github-account)
 
+[Hugo Themes](https://themes.gohugo.io) Websites themes 
+
+[netlify](https://www.netlify.com)
+
 [“I web, therefore I am a spiderman.”- Yihui Xie](https://bookdown.org/yihui/blogdown/) blogdown: Creating Websites with R Markdown  
 
 [Alison Hill](https://summer-of-blogdown.netlify.app) Summer of blogdown 
 
-[Hugo Themes](https://themes.gohugo.io) Websites themes 
+[Emi Tanaka](https://rladies-melb-blogdown.netlify.app/#1) Getting down and up with blogging in R
 
-[netlify](https://www.netlify.com)
+
+???
+
+Here are some links I provided for you to save your some googling time. In case you haven't tick all the boxes on the check list, the frist 4 links would help you to set it up. 
+
+If you want to learn more about blogdown, I highly recommend blogdown textbook to read more about it.It is a comperhensive guide  Also feel free to check out Alsion and Emi's workshop about blogdown. 
 
 ---
 background-image: url(images/before-6.jpg)
 background-size: 100%
 
+---
+background-image: linear-gradient(to right, rgba(250, 250, 250, .5), rgba(250, 250, 250, .4)),url(images/begincode.jpeg)
+background-size: cover
+
+class: center, top
+
+
+# Let's begin our journey  
+
+Copy this lines of code to your RStudio Console:
+
+
+```{r,echo=TRUE,message=FALSE,eval = FALSE}
+library(blogdown)
+new_site(theme = "wowchemy/starter-academic")
+```
+
+
+---
+background-image:url(images/begincode2.jpg)
+background-size: 100%
+
+---
+background-image: linear-gradient(to right, rgba(250, 250, 250, .5), rgba(250, 250, 250, .4)),url(images/begincode.jpeg)
+background-size: cover
+
+class: center, top
+
+
+## Serve site 
+
+```{r,echo=TRUE,message=FALSE,eval = FALSE}
+blogdown::serve_site()
+```
+
+## Stop serving site 
+
+```{r,echo=TRUE,message=FALSE,eval = FALSE}
+blogdown::stop_server()
+```
+
+### Blogdown automatic serve site everytime you make a change and saved it. So no need to serve site everytime 
+
+---
+background-image:url(images/folder1.jpg)
+background-size: 100%
+
+class: center, top
+
+# Let's look at the structure of the files 
+
+
+???
+
+Be aware that this instruction are to the academic-start theme only. The structure of the files and folders might very from themes to themes 
+---
+background-image:url(images/folder2.jpg)
+background-size: 100%
+
+class: center, top
+
+# Make some changes 
+---
+background-image:url(images/folder3.jpg)
+background-size: 100%
+
+class: center, top
+
+# Where should I change to make this mine 
+---
+background-image:url(images/folder4.jpg)
+background-size: 100%
+
+class: center, right
+
+# Example: experience.md
+
+---
+background-image:url(images/folder5.jpg)
+background-size: 100%
+
+
+
+.footnote[yaml syntax:
+<https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html>
+]
+
+
+---
+background-image:url(images/config1.jpg)
+background-size: 100%
+
+class: center, right
+
+# What is config?
+
+---
+background-image:url(images/config2.jpg)
+background-size: 100%
+
+.footnote[choose of colors:
+<https://wowchemy.com/docs/getting-started/customization/>
+]
+
+
+---
+
+class: center, middle
+
+
+# Working time!
+
+.center[<img src="https://media.giphy.com/media/aNqEFrYVnsS52/giphy.gif" style="width:30%"/>]
+
+---
+class: center, middle
+# Stay in Touch 
+
+.center[<img src="https://media.giphy.com/media/RiykPw9tgdOylwFgUe/giphy.gif" style="width:30%"/>]
+
+[`r icon::fontawesome$solid$"paper-plane"` &nbsp; danyan.dai01@gmail.com](mailto:danyan.dai01@gmail.com)
+
+[`r icon::fontawesome$brands$"linkedin"`&nbsp; https://www.linkedin.com/in/danyang-dai-7529b4152/](https://www.linkedin.com/in/danyang-dai-7529b4152/)
 
