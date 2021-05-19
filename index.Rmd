@@ -20,7 +20,10 @@ output:
       beforeInit: "https://platform.twitter.com/widgets.js"
 ---
 
-```{r setup, include=FALSE}
+```{r setup,echo=TRUE, message=FALSE,eval = FALSE}
+```
+
+```{r,include=FALSE}
 options(htmltools.dir.version = FALSE)
 knitr::opts_chunk$set(warning = FALSE, message = FALSE, 
   comment = NA, dpi = 300, echo = FALSE,
@@ -28,6 +31,20 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE,
   fig.path = "figs/")
 library(tidyverse)
 library(gganimate)
+library(ggplot2)
+library(dplyr)
+library(sf)
+library(rworldmap)
+library(stplanr)
+library(ggrepel)
+library(emojifont)
+library(fontawesome)
+library(kableExtra)
+library(huxtable)
+library(gridExtra)
+library(icon)
+library(rworldxtra)
+library(knitr)
 ozcols <- wesanderson::wes_palette("Royal2")[c(2:3)]
 ```
 
@@ -39,6 +56,65 @@ class: title-slide, center, bottom
 ## `r rmarkdown::metadata$author`
 
 #### `r params$event` &#183; `r params$date`
+
+
+???
+
+I am honored to be here today and work with you all. It's the our first in person event and I am very excited to share my experience with Blogdown and building website with you all together tonight!
+
+Before we start, can we do a quick survey about your experience with R. Please put your hand up if you worked with blogdown before. Have you worked with R markdown before? Have you worked with R before?  
+
+
+Great! now that I have an basic idea about your experience now. Let's get started! 
+---
+
+
+# About Me 
+
+- Graduated from Monash University with Bachelors of Commerce in 2018 
+- Graduated from University of Melbourne with Masters in applied econometrics 2020
+- Currently looking for data driven employment opportunities in Melbourne area 
+
+```{r edu_plot,fig.align='center', fig.width=8, fig.height=5,dpi=300, fig.showtext=TRUE,echo=FALSE,message=FALSE, cache=TRUE, eval=TRUE}
+uni <- emojifont::fontawesome('fa-university')
+home <- emojifont::fontawesome('fa-home')
+world <- getMap(resolution = "high")
+world <- world %>% st_as_sf()
+cities <- st_sfc(
+    st_point(c(116.44163,39.925494)),
+    st_point(c(145.138,-37.9083)),
+    st_point(c(144.9614,-37.7963))
+  ) %>%
+  st_sf(name = c('Beijing','Monash University','University of Melbourne')) %>%
+  st_set_crs(4326) %>%
+  mutate(label = c(paste(home, sep = " "), rep(uni,2)))
+routes <- cities %>%
+  points2line() %>%
+  slice(c(2,7,12)) %>%
+  st_segmentize(units::set_units(100, m))
+ggplot(data = world) +
+  geom_sf(color = 'white', lwd = 0.1) +
+  xlab("") + ylab("") +
+  geom_sf_text(
+    data = cities,
+    aes(label = label),
+    size = 3,
+    color = '#009ACD',
+    family = "fontawesome-webfont"
+  ) +
+  geom_sf(
+    data = routes, color = '#009ACD', size = 0.5, alpha = 0.5, linetype = 'dotted'
+  ) +
+  coord_sf(crs = '+proj=robin', xlim = c(0, 45000000), ylim =NULL) +
+  theme_minimal() +
+  theme(
+    panel.grid = element_line(color = 'transparent'),
+     plot.margin = margin(-8, -24, -10, 0, "cm"),
+    # axis.text = element_blank(),
+    # axis.title = element_blank()
+  )
+```
+
 
 ---
 background-image: linear-gradient(to right, rgba(250, 250, 250, .5), rgba(250, 250, 250, .6)),url(images/background1.png)
@@ -68,20 +144,31 @@ background-size: 100%
 background-image: url(images/blogdown-2.jpg)
 background-size: 100%
 
+???
+
+Tada: It's an R package! 
 ---
 
 background-image: url(images/blogdown-3.jpg
 background-size: 100%
 
+???
+
+It allows you to build website in R. 
+
 ---
 background-image: url(images/blogdown-4.jpg)
 background-size: 100%
 
-
-
 ???
 
 you can publish your website that is created in R with blogdown to world 
+
+--
+.center[<img src="https://media.giphy.com/media/JmUfwENE6i4Jxig27n/giphy.gif" style="width:60%"/>]
+
+
+
 
 
 ---
@@ -94,6 +181,9 @@ background-size: 100%
 
 <iframe src="https://alison.rbind.io" height="400" width="1200" frameborder="0"></iframe> 
 
+???
+
+Alison is a PhD data scientist and professional educator at RStudio. I have been benefits a lot from here presentations and workshops. Her github is a gold min. 
 
 ---
 class: center, bottom
@@ -104,6 +194,11 @@ background-size: 100%
 <http://www.dicook.org>
 
 <iframe src="http://www.dicook.org" height="400" width="1200" frameborder="0"></iframe> 
+
+???
+
+Di is a well-respect professor of business analytics at Monash. She have been super super supporting to me and to R Ladies Melbourne. 
+
 ---
 class: center, bottom
 
@@ -114,6 +209,9 @@ background-size: 100%
 
 <iframe src="https://earo.me" height="400" width="1200" frameborder="0"></iframe> 
 
+???
+
+Earo is now a lecture at Auckland. She has a very cool customised website 
 ---
 class: center, bottom
 
@@ -139,7 +237,7 @@ background-size: 100%
 
 ???
 
-Hugo is a static site generator. Blogdown uses Hugo to create and build webiste in R. It also provides the themes we want to use in Blogdown
+Hugo is a static site generator. Blogdown uses Hugo to create and build webiste in R. It also provides the themes we used in Blogdown
 
 ---
 class: center, bottom
@@ -149,6 +247,9 @@ class: center, bottom
 
 <iframe src="https://themes.gohugo.io" height="600" width="1200" frameborder="0"></iframe> 
 
+???
+
+Here is where you go brows for all the different themes you can adopt for your website. 
 ---
 
 
@@ -157,7 +258,7 @@ background-size: 100%
 
 ???
 
-You can tell and share your storys by adding blog posts in your website using R markdown. 
+You can tell and share your stories by adding blog posts in your website using R markdown. 
 
 ---
 
@@ -169,11 +270,10 @@ class: center, top
 # What do I want to put on my website? 
 
 
-
-
 ???
 
-Just in case you haven't used R markdown before, check out my last talk from the website in the footnote 
+Simply use the addins from the top. Cick on new post
+
 
 ---
 
@@ -187,6 +287,11 @@ class: center, top
 .footnote[
 <https://dai.netlify.app/talk/r-markdown-a-better-way-of-communicating-with-data/>
 ]
+
+
+???
+
+Just in case you haven't used R markdown before, check out my last talk from the website in the footnote 
 
 ---
 background-image: url(images/how-13.jpg)
@@ -206,6 +311,10 @@ class: center, top
 
 # How to create a github repo?
 
+
+???
+
+here are some very simple steps on how to create a github repo. copy the HTTPS link if you don't know that SSH is 
 ---
 background-image: url(images/git2.jpg)
 background-size: 100%
@@ -214,7 +323,9 @@ class: center, top
 
 # How to clone a repo in R Studio?
 
+??? 
 
+You can come back to this slides later when you have trouble link github to R studio 
 ---
 background-image: url(images/how-14.jpg)
 background-size: 100%
@@ -235,6 +346,9 @@ background-size: 100%
 background-image: url(images/before1.jpg)
 background-size: 100%
 
+???
+
+Here is a check list before we start making a website using Blogdown 
 ---
 background-image: url(images/before2.jpg)
 background-size: 100%
@@ -277,7 +391,7 @@ class: center, middle
 
 Here are some links I provided for you to save your some googling time. In case you haven't tick all the boxes on the check list, the frist 4 links would help you to set it up. 
 
-If you want to learn more about blogdown, I highly recommend blogdown textbook to read more about it.It is a comperhensive guide  Also feel free to check out Alsion and Emi's workshop about blogdown. 
+If you want to learn more about blogdown, I highly recommend blogdown textbook to read more about it.It is a comprehensive guide of blogdown.  Also feel free to check out Alsion and Emi's workshop about blogdown. They are great materils for learning more about blogdown 
 
 ---
 background-image: url(images/before-6.jpg)
@@ -395,7 +509,36 @@ class: center, middle
 
 # Working time!
 
-.center[<img src="https://media.giphy.com/media/aNqEFrYVnsS52/giphy.gif" style="width:30%"/>]
+.center[<img src="https://media.giphy.com/media/aNqEFrYVnsS52/giphy.gif" style="width:60%"/>]
+
+
+
+---
+class: left, middle
+
+# check list before publish it to Netlify 
+
+.pull-left[
+- Check your site's configuration
+- Screens for items you should remove, and for items you can safely add
+- Check your Hugo versions
+- Check your Hugo content
+- Check your Netlify setup
+]
+
+.pull-right[
+```{r,echo=TRUE,message=FALSE,eval = FALSE}
+blogdown::check_config() 
+blogdown::check_gitignore() 
+blogdown::check_hugo() 
+blogdown::check_content() 
+blogdown::check_netlify() 
+```
+]
+
+.footnote[Read more from:
+<https://alison.rbind.io/post/2020-12-27-blogdown-checks/>
+]
 
 ---
 class: center, middle
