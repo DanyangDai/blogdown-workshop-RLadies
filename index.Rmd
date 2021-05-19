@@ -45,6 +45,8 @@ library(gridExtra)
 library(icon)
 library(rworldxtra)
 library(knitr)
+knit_global() 
+
 ozcols <- wesanderson::wes_palette("Royal2")[c(2:3)]
 ```
 
